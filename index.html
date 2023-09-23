@@ -18,6 +18,12 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- <link href="assets/css/owl.carousel.css" rel="stylesheet"> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -757,7 +763,50 @@
       </div>
     </div>
   </footer>
+<!-- section begin -->
+<section id="section-clients" aria-label="section" class="pt60 pb40">
   
+  <div class="row">
+      <div class="owl-carousel owl-sponsors gray">
+          <div class="item"><img src="https://img.icons8.com/color/80/null/java-coffee-cup-logo--v1.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/external-others-iconmarket/80/null/external-jsp-file-types-others-iconmarket-2.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/spring-logo.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/officel/80/000000/java-eclipse.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/html-5--v1.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/css3.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/bootstrap.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/thymeleaf.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/c-programming.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/fluency/80/null/c-plus-plus-logo.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/tomcat.png" alt></div>
+          <div class="item"><img src="https://img.icons8.com/color/80/null/mysql-logo.png" alt></div>
+      </div>
+  </div>
+</section>
+<!-- section close -->
+
+<script>
+  $(document).ready(function () {
+      $(".owl-carousel").owlCarousel({
+          loop: true, // Enable loop mode
+          margin: 10, // Space between items
+          responsiveClass: true,
+          responsive: {
+              0: {
+                  items: 1, 
+              },
+              600: {
+                  items: 3, 
+              },
+              1000: {
+                  items: 5, 
+              },
+          },
+      });
+  });
+</script>
+
+
   <!-- End  Footer -->
 
   <div id="preloader"></div>
