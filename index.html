@@ -111,7 +111,7 @@
                     <div class="progress">
                       <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <span>JAVA</span> <span class="pull-right">50%</span>
+                    <span>ADVANCED JAVA</span> <span class="pull-right">50%</span>
                     <div class="progress">
                       <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -120,7 +120,7 @@
                       <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="col-md-12 text-center">
-                      <button type="submit" class="button button-a button-big button-rouded">Resume</button>
+                      <a href="PrajwalResume.pdf"><button type="submit" class="button button-a button-big button-rouded"><a href="PrajwalResume.pdf">Resume</button></a>
                     </div>
                   </div>
                 </div>
@@ -614,8 +614,7 @@
                       </h5>
                     </div>
                     <div>
-                      <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                        <div class="row">
+                      <form name="submit-to-google-sheet" id="contact_form" class="de_form">                        <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
                               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -636,14 +635,16 @@
                               <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                             </div>
                           </div>
+                         
+                          
                           <div class="col-md-12 text-center my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div id="submit">
+                              <input type="submit" value="Submit Form"  class="button button-a button-big button-rouded">
+                            </div>
+                            <div id="mail_succ  ess" class="success"></div>
+                            <div id="mail_fail" class="error"> </div>
                           </div>
-                          <div class="col-md-12 text-center">
-                            <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
-                          </div>
+
                         </div>
                       </form>
                     </div>
@@ -694,18 +695,12 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <div class="copyright-box">
+          <!-- <div class="copyright-box">
             <p class="copyright">&copy; Copyright <strong>DevFolio</strong>. All Rights Reserved</p>
             <div class="credits">
-              <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
-            -->
               Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -729,6 +724,36 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxO0STNGw1Pk75YWD_GitMEnAgZ0UzzG31GUojANGnn7Z4lUPd04puy1VUyCaha1QAp/exec'; // Replace with your actual script URL
+    const form = document.forms['submit-to-google-sheet'];
+    const mailSuccess = document.getElementById('mail_success');
+    const mailFail = document.getElementById('mail_fail');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          if (response.ok) {
+            mailSuccess.style.display = 'block';
+            mailFail.style.display = 'none';
+            console.log('Form submitted successfully', response);
+            form.reset();
+          } else {
+            mailSuccess.style.display = 'none';
+            mailFail.style.display = 'block';
+            console.error('Error submitting form', response);
+          }
+        })
+        .catch(error => {
+          mailSuccess.style.display = 'none';
+          mailFail.style.display = 'block';
+          console.error('Error submitting form', error);
+        });
+    });
+  </script>
 
 </body>
 
