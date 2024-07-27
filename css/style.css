@@ -293,4 +293,19 @@
 } */
 .single-profile:hover .profile-icon-name,.single-profile:hover .profile-txt a>i{color: #fff;}
 .single-profile:hover .profile-border {border:transparent;}
-/*-------------------------------------
+/*-------------------------------------*/
+.projects-section .project-text {
+  padding: 3rem;
+  font-size: 90%;
+  background-color:#314355;
+}
+@media (min-width: 992px) {
+  .projects-section .project-text {
+    padding: 5rem;
+  }
+}
+
+
+
+
+
