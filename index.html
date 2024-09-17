@@ -11,6 +11,7 @@
         <link href="img/favicon.ico" rel="icon">
 
 
+
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,8 +58,8 @@
                             <div class="typed-text d-none"> Full stack java Developer, Front End Developer, Web Designer</div>
                         </div>
                         <div class="d-flex justify-content-center mt-auto mb-3">
-                            <a class="btn btn-secondary btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-secondary btn-square mx-1" href=""><i class="fab fa-github"></i></a>
+                            <a class="btn btn-secondary btn-square mx-1" href="https://www.linkedin.com/in/prajwal-patil-045a79249/"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-secondary btn-square mx-1" href="https://github.com/Prajwal8674"><i class="fab fa-github"></i></a>
                             <a class="btn btn-secondary btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-secondary btn-square mx-1" href="mailto:patilprajwal8804@gmail.com"><i class="far fa-envelope"></i></a>
                         </div>
@@ -583,7 +584,7 @@
                                         <div class="project-links">
                                           <!-- <a href="https://www.youtube.com/watch?v=uhyC0M4WIl4" class="btn-blue btn-small hover-bg-light" target="_blank"> <i class="fab fa-youtube"></i> Demo</a> -->
                                           <a href="https://github.com/Prajwal8674/Bike-Rental-Project-JSP" class="btn-blue-outline btn-small mx-1" target="_blank"> <i class="fab fa-github"></i
-                                            > Code</a>
+                                            > Source</a>
                                         </div> 
                                       </div>
                                     </div>
@@ -597,32 +598,32 @@
   
 
 <!-- Contact Start -->
+<!-- Contact Start -->
 <section class="py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
     <h1 class="title pb-3 mb-5">Contact Me</h1>
-    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a></p>
-    <form>
+    <form id="contactForm">
         <div class="row g-3">
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control border-0 bg-secondary" id="name" placeholder="Your Name">
+                    <input type="text" class="form-control border-0 bg-secondary" id="name" placeholder="Your Name" required>
                     <label for="name">Your Name</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="email" class="form-control border-0 bg-secondary" id="email" placeholder="Your Email">
+                    <input type="email" class="form-control border-0 bg-secondary" id="email" placeholder="Your Email" required>
                     <label for="email">Your Email</label>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-floating">
-                    <input type="text" class="form-control border-0 bg-secondary" id="subject" placeholder="Subject">
+                    <input type="text" class="form-control border-0 bg-secondary" id="subject" placeholder="Subject" required>
                     <label for="subject">Subject</label>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-floating">
-                    <textarea class="form-control border-0 bg-secondary" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
+                    <textarea class="form-control border-0 bg-secondary" placeholder="Leave a message here" id="message" style="height: 200px" required></textarea>
                     <label for="message">Message</label>
                 </div>
             </div>
@@ -634,27 +635,65 @@
 </section>
 <!-- Contact End -->
 
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Collect form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    // Create form data in a URLSearchParams format for the POST request
+    const formData = new URLSearchParams();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('subject', subject);
+    formData.append('message', message);
+
+    // Your Google Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwKx32qjo6a5xpXKoqNKm52g170NpSot7VzmNtBqt8P_WckDWqGl612zJi4PGtkIfl5/exec';
+
+    try {
+      // Send form data via POST to the Web App
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+      if (result.result === 'success') {
+        alert('Message sent successfully!');
+      } else {
+        alert('Failed to send message. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error!', error);
+      alert('An error occurred. Please try again.');
+    }
+  });
+</script>
+
+<!-- Contact End -->
+
 <!-- Footer Start -->
 <section class="wow fadeIn" data-wow-delay="0.1s">
     <div class="bg-secondary text-light text-center p-5">
         <div class="d-flex justify-content-center mb-4">
-            <a class="btn btn-dark btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a class="btn btn-dark btn-square mx-1" href=""><i class="fab fa-github"></i></a>
+            <a class="btn btn-dark btn-square mx-1" href="https://www.linkedin.com/in/prajwal-patil-045a79249/"><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-dark btn-square mx-1" href="https://github.com/Prajwal8674"><i class="fab fa-github"></i></a>
             <a class="btn btn-dark btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
             <a class="btn btn-dark btn-square mx-1" href="https://www.instagram.com/prajwal.6803/"><i class="fab fa-instagram"></i></a>
             <a class="btn btn-dark btn-square mx-1" href="mailto:patilprajwal8804@gmail.com"><i class="far fa-envelope"></i></a>
 
         </div>
         <div class="d-flex justify-content-center mb-3">
-            <a class="text-light px-3 border-end" href="#">Privacy</a>
-            <a class="text-light px-3 border-end" href="#">Terms</a>
-            <a class="text-light px-3 border-end" href="#">FAQs</a>
-            <a class="text-light px-3" href="#">Help</a>
+            <p class="d-flex justify-content-center mb-3">made with love</p>
+
+         
         </div>
-        
-        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-        <p class="m-0">&copy; All Rights Reserved. Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
-    </div>
+            </div>
 </section>
 <!-- Footer End -->
 </div>
@@ -665,6 +704,11 @@
 <!-- Back to Top -->
 <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+
+<script>
+
+    
+</script>
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
